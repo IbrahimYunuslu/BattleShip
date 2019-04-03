@@ -13,4 +13,22 @@ public class PlayerBoats {
 		shipIsDead = false;
 	}
 
+	public void setBoatImage(String file) {
+		shipPieceAlive = new ImageIcon(file).getImage();
+	}
+
+	public Image getBoatImage() {
+		return shipPieceAlive;
+	}
+
+	public void destroy() {
+		shipIsDead = true;
+		if (isPlayer1)	setBoatImage("hit1anim.gif");
+		else setBoatImage("hit2anim.gif");
+	}
+
+	public boolean isDestroy() {
+		return shipIsDead;
+	}
+
 }
