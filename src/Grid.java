@@ -35,4 +35,44 @@ public class Grid extends JPanel implements MouseListener {
 			System.out.println("Failed to load image");
 		}
 	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+
+	public boolean isTurn() {
+		return isTurn;
+	}
+
+	public void setTurn(boolean t) {
+		isTurn = t;
+	}
+
+	public Object[][] getArray() {
+		return array;
+	}
+
+	public void setArray(Object[][] arr) {
+		array = arr;
+	}
+	
+	public boolean getState(){
+		return state;
+	}
+	
+	public void setState(boolean s){
+		state = s;
+	}
+
 }
