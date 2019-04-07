@@ -35,6 +35,12 @@ public class MyGrid extends JPanel {
 				if ((array[i][j]).getClass().getName().equals("PlayerBoats"))	g2.drawImage(((PlayerBoats) array[i][j]).getBoatImage(), 23 + 2 + ((20 + 3) * i) + 3/2, 39 + 2 + ((20 + 3) * j) + 3/2, 18, 18, this);
 	}
 
-	
+	public Object[][] getArray() {
+		return array;
+	}
+
+	public void setArray(Object[][] array) {
+		this.array = array;
+	}
 
 }
