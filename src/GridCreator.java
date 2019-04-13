@@ -53,6 +53,18 @@ public class GridCreator extends JPanel {
 		}
 	}
 		
+	private void rightClick(int shipNum, int x, int y) {
+		boolean isVertical = false;
+		if (((BoxLayout) panelArray[shipNum].getLayout()).getAxis() == BoxLayout.Y_AXIS)	isVertical = true;
+		removeBoatFromGridArray(shipArray[shipNum], isVertical);
+		if (rotatePanel(panelArray[shipNum]) && !currentlyPlacingBoat)	addBoatToGridArray(shipArray[shipNum], new Point(x, y), !isVertical);
+		else if (!currentlyPlacingBoat) {
+			panelArray[shipNum].setLocation(shipArray[shipNum].getStartingOffGridPosition());
+			rotatePanel(panelArray[shipNum]);
+		}
+		showDoneButton();
+	}
+	
 	public Object[][] getGridArray() {
 		return gridArray;
 	}
