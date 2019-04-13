@@ -65,6 +65,36 @@ public class GridCreator extends JPanel {
 		showDoneButton();
 	}
 	
+	private void leftClick(int shipNum, int x, int y) {
+		if ((((BoxLayout) panelArray[shipNum].getLayout()).getAxis() == BoxLayout.X_AXIS)) {
+			if (x < gridArray.length - panelArray[shipNum].getWidth() / 47 + 1 && x >= 0)
+				if (y < gridArray[0].length - panelArray[shipNum].getHeight() / 47 + 1 && y >= 0)
+					placeBoatPanelOnGrid(x, y, shipNum, false);
+				else {
+					panelArray[shipNum].setLocation(shipArray[shipNum].getStartingOffGridPosition());
+					removeBoatFromGridArray(shipArray[shipNum], false);
+				}
+			else {
+				panelArray[shipNum].setLocation(shipArray[shipNum].getStartingOffGridPosition());
+				removeBoatFromGridArray(shipArray[shipNum], false);
+			}
+		} else
+			if (x < gridArray.length - panelArray[shipNum].getWidth() / 47 + 1 && x >= 0) {
+				if (y < gridArray[0].length - panelArray[shipNum].getHeight() / 47 + 1 && y >= 0)
+					placeBoatPanelOnGrid(x, y, shipNum, true);
+				else {
+					rotatePanel(panelArray[shipNum]);
+					panelArray[shipNum].setLocation(shipArray[shipNum].getStartingOffGridPosition());
+					removeBoatFromGridArray(shipArray[shipNum], true);
+				}
+			} else {
+				rotatePanel(panelArray[shipNum]);
+				panelArray[shipNum].setLocation(shipArray[shipNum].getStartingOffGridPosition());
+				removeBoatFromGridArray(shipArray[shipNum], true);
+			}
+		showDoneButton();
+	}
+	
 	public Object[][] getGridArray() {
 		return gridArray;
 	}
