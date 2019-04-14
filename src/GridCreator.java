@@ -267,50 +267,6 @@ public class GridCreator extends JPanel {
 				else	gridArray[(int) location.getX() + i][(int) location.getY()] = ship.getPlayerBoats()[i];
 	}
 
-	private boolean rotatePanel(JPanel panel) {
-		if (((BoxLayout) panel.getLayout()).getAxis() == BoxLayout.X_AXIS) {
-			if (panel.getX() > 54 + ((47 + 5) * gridArray.length) && !currentlyPlacingBoat)	return false;
-			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-			int temp = panel.getWidth();
-			int temp2 = panel.getHeight();
-			panel.setSize(temp2, temp);
-			for (int i = 0; i < panel.getComponentCount(); i++)
-				if (!panel.getComponent(i).getClass().toString().equals("JPanel")) {
-					panel.add(Box.createRigidArea(new Dimension(0, 5 + 2)), i);
-					panel.remove(++i);
-				}
-			panel.add(Box.createRigidArea(new Dimension(0, 0)), 0);
-			panel.remove(1);
-			panel.validate();
-			panel.setLocation(panel.getX(), panel.getY());
-
-			int counter = 0;
-			while (56 + ((47 + 5) * counter) < panel.getY() + panel.getWidth())	counter++;
-			counter--;
-
-			if (!(counter <= gridArray[0].length - panel.getHeight() / 47 && counter >= 0) || isIntersection(panel)) return false;
-		} else if (((BoxLayout) panel.getLayout()).getAxis() == BoxLayout.Y_AXIS) {
-			panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-			int temp = panel.getWidth();
-			int temp2 = panel.getHeight();
-			panel.setSize(temp2, temp);
-			for (int i = 0; i < panel.getComponentCount(); i++)
-				if (!panel.getComponent(i).getClass().toString().equals("JPanel")) {
-					panel.add(Box.createRigidArea(new Dimension(5 + 2, 0)), i);
-					panel.remove(++i);
-				}
-			panel.add(Box.createRigidArea(new Dimension(0, 0)), 0);
-			panel.remove(1);
-			panel.validate();
-			panel.setLocation(panel.getX(), panel.getY());
-			int counter = 0;
-			while (54 + ((47 + 5) * counter) < panel.getX() + panel.getHeight())	counter++;
-			counter--;
-
-			if (!(counter <= gridArray.length - panel.getWidth() / 47 && counter >= 0) || isIntersection(panel))	return false;
-		}
-		return true;
-	}
 
 	public Object[][] getGridArray() {
 		return gridArray;
