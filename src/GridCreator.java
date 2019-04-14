@@ -224,6 +224,49 @@ public class GridCreator extends JPanel {
 		showDoneButton();
 	}
 	
+	private void placeBoatPanelOnGrid(int x, int y, int shipNum, boolean isVertical) {
+		panelArray[shipNum].setLocation(54 + x + (((47 + 5) * x) + 5 / 2), 56 + y + ((47 + 5) * y) + 5 / 2);
+		if (isIntersection(panelArray[shipNum])) {
+			if (isVertical)	rotatePanel(panelArray[shipNum]);
+			removeBoatFromGridArray(shipArray[shipNum], false);
+			panelArray[shipNum].setLocation(shipArray[shipNum].getStartingOffGridPosition());
+		} else {
+			removeBoatFromGridArray(shipArray[shipNum], isVertical);
+			addBoatToGridArray(shipArray[shipNum], new Point(x, y), isVertical);
+		}
+	}
+
+	private void showDoneButton() {
+		boolean showButton = true;
+		if (!currentlyPlacingBoat) {
+			for (int i = 0; i < shipArray.length; i++)
+				if (shipArray[i].getStartingOffGridPosition().equals(panelArray[i].getLocation()))	showButton = false;
+			endSetup.setVisible(showButton);
+		}
+	}
+
+	private boolean isIntersection(JPanel p) {
+		for (int i = 0; i < panelArray.length; i++) {
+			if (p.getBounds().intersects(panelArray[i].getBounds()) && !p.equals(panelArray[i]))
+				return true;
+		}
+		return false;
+	}
+
+	private void removeBoatFromGridArray(Boat ship, boolean isVertical) {
+		for (int i = 0; i < gridArray.length; i++)
+			for (int j = 0; j < gridArray[i].length; j++)
+				for (int k = 0; k < ship.getPlayerBoats().length; k++)
+					if (gridArray[j][i] == (PlayerBoats) ship.getPlayerBoats()[k])	gridArray[j][i] = 1;
+	}
+
+	private void addBoatToGridArray(Boat ship, Point location, boolean isVertical) {
+		if (location.getX() < gridArray.length && location.getX() >= 0 && location.getY() < gridArray.length && location.getY() >= 0)
+			for (int i = 0; i < ship.getPlayerBoats().length; i++)
+				if (isVertical)	gridArray[(int) location.getX()][(int) location.getY() + i] = ship.getPlayerBoats()[i];
+				else	gridArray[(int) location.getX() + i][(int) location.getY()] = ship.getPlayerBoats()[i];
+	}
+	
 	public Object[][] getGridArray() {
 		return gridArray;
 	}
