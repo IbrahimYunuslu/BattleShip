@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ScreenSwitcher  {
+public class ScreenSwitcher implements MouseListener {
 
 	private JPanel window;
 	private JLabel bkgImageContainer;
@@ -35,4 +35,26 @@ public class ScreenSwitcher  {
 		return isImageVisible;
 	}
 
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		window.remove(bkgImageContainer);
+		window.revalidate();
+		window.repaint();
+		grid.setTurn(true);
+		grid.setVisible(true);
+		small.setVisible(true);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {}
+	
 }
