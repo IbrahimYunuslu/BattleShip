@@ -6,13 +6,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ScreenSwitcher {
+public class ScreenSwitcher  {
 
 	private JPanel window;
 	private JLabel bkgImageContainer;
 	private volatile boolean isImageVisible;
 	private Grid grid;
 	private MyGrid small;
-	
 	
 }
