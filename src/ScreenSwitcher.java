@@ -14,4 +14,25 @@ public class ScreenSwitcher  {
 	private Grid grid;
 	private MyGrid small;
 	
+	public ScreenSwitcher(JPanel theWindow, Grid grid, MyGrid small){
+		window = theWindow;
+		bkgImageContainer = new JLabel(new ImageIcon(new ImageIcon("NextTurn.png").getImage().getScaledInstance(window.getWidth(), window.getHeight(), BufferedImage.SCALE_FAST)));
+		bkgImageContainer.setSize(window.getWidth(), window.getHeight());
+		bkgImageContainer.setLocation(0, 0); 
+		isImageVisible = true;
+		this.grid = grid;
+		this.small = small;
+	}
+	
+	public void loadTurnScreen() {
+		window.add(bkgImageContainer);
+		bkgImageContainer.addMouseListener(this);
+		window.setVisible(true);
+		window.repaint();
+	}
+
+	public boolean isImageVisible(){
+		return isImageVisible;
+	}
+
 }
