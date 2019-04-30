@@ -30,22 +30,22 @@ The project can be compiled in IntelliJ IDEA, Eclipse and in terminal.
  
  ### How to play
  
- The rules are simple every player has one chance to shoot even he/she will hit.
+-The rules are simple every player has one chance to shoot even he/she will hit.
  
- First player shoots by clicking after he should click one time again for hiding his/her screen.
+-First player shoots by clicking after he should click one time again for hiding his/her screen.
  
- Now time for the second one, player should click one time for getting his screen and shot after again one click for hiding. 
+-Now time for the second one, player should click one time for getting his screen and shot after again one click for hiding. 
 
+## Some instructions
+
+-When you hit there will appear animation with burning ship
+-In case of crashing there will appear smoking ship
+-Otherwise nothing will appear
 
 ## UML Diagrams
-
-The following diagrams are presented for each version:
 
 -  activity diagrams
 -  usecase diagrams
 -  sequence diagrams
 -  state diagrams
 -  class diagrams
-
-## 
-
