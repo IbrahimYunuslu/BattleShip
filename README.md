@@ -1,5 +1,10 @@
 # Battle Ship Project
 
+# Ibrahim Yunuslu: IbrahimYunuslu
+
+# Ali Mammadov: mammadov7
+
+
 Project of Software Engineering Cours (Ufaz).
 
 The main version of the code is game in GUI between two players in one screen. Which switches in each shoting, by giving more chance to both sides.
